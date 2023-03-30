@@ -13,7 +13,11 @@ Web scraping code inspired by this:
 
 ### Things I had to install to make this work
 
-**http-server**
+**puppeteer** (in project dir)
+
+```npm install puppeteer```
+
+**http-server** (in screenshot folder dir)
 
 ```npm install http-server```
 
