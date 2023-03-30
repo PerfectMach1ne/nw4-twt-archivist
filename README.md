@@ -6,6 +6,18 @@ For managing my Twitter Minecraft screenshot archive without overpriced Twitter 
 [todoooooo]
 [let's go get this scraped data lesbians]
 
+### Things I had to install to make this work
+
+**http-server**
+
+```npm install http-server```
+
+Global install alternative:
+
+```npm install http-server -g```
+
+(although my silly Bash script is supposed to take care of those dependencies. Just install **Node.js, npm and WSL** and this stitched abomination from Betweenworlds should become runnable on your Windows system; since this is a comically unportable tool designed exclusively for personal use on my personal device, I'll think about how to make it runnable on penguin system when I gather up the courage to install it on my laptop ~~(grub on my old laptop with Windows & Linux deleted itself one day and I've been terrified of Windows Boot Loader since)~~) 
+
 ## Obligatory (m)Elon seasoning for the roast season
 
 **"musk"**
