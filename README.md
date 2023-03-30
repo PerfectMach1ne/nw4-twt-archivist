@@ -1,6 +1,11 @@
 # nw4-twt-archivist
 For managing my Twitter Minecraft screenshot archive without overpriced Twitter API.
 
+Web scraping code inspired by this:
+
+- https://github.com/face-hh/tweetfree
+- ["I Made Twitter API Free"](https://www.youtube.com/watch?v=kz8-puGf2nY)
+
 ## [Technical details here]
 
 [todoooooo]

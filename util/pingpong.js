@@ -1,4 +1,3 @@
-// Ping to see if the screenshot HTTP server is up and responing
 function ping() {
   fetch('http://127.0.0.1:4444')
   .then(res => {
