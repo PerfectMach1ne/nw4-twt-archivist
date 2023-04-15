@@ -63,8 +63,7 @@ find_puppeteer () {
   if [ $(expr index "$npmoutput" "$pkgname") = 0 ]; then
     si_echo "puppeteer is not installed in the local project directory."
     si_echo "Installing it for you now, because I am smart."
-    npm i puppeteer
-    npm fund
+    npm install puppeteer
   else
     si_echo "Found puppeteer in the project directory. Great, carry on."
   fi
@@ -79,7 +78,6 @@ run_http_server () {
     si_echo "http-server is not installed in the local screenshot server directory."
     si_echo "Installing it for you now, because I am smart."
     npm install http-server
-    npm fund
   else
     si_echo "Found http-server in the local screenshot server directory."
     si_echo "Running it for you now, because I am smart."
