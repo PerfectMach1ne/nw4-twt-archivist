@@ -15,6 +15,27 @@ function pingpongping() {
 pingpongping();
 
 // https://www.freecodecamp.org/news/module-exports-how-to-export-in-node-js-and-javascript/
-const { twitter } = require('./twthandler');
+async function main() {
+  const twt = require('./twthandler');
+  const twtListener = require('./util/search');
 
-const client = new twitter({ debug: true });
+  const client = new twt({ debug: false });
+
+  await client.init();
+
+  var creds;
+
+  if (fs.existsSync('credentials.json'))
+    creds = fs.readFileSync('credentials.json', 'utf-8');
+  const deserializedCreds = JSON.parse(creds);
+
+  await client.login({
+    email: `${deserializedCreds.email}`,
+    password: `${deserializedCreds.password}`,
+    username: `${deserializedCreds.username}`
+  });
+
+  console.log('Logged in!!!');
+}
+
+main().then( () => process.exit(0), e => {console.error(e); process.exit(1) } );
