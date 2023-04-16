@@ -27,6 +27,10 @@ module.exports = class Twitter {
       'verification_username': '//*[@id="layers"]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div[2]/label/div/div[2]/div/input',
       'verification_next_button': '//*[@id="layers"]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[2]/div/div/div/div/div',
 
+      'tweet_div': '//*[@id="react-root"]/div/div/div[2]/main/div/div/div/div/div/div[3]/div/div[2]/div[1]/div/div/div',
+      'tweet_modal': '//*[@id="react-root"]/div/div/div[2]/main/div/div/div/div[1]/div/div[3]/div/div[2]/div[1]/div/div/div/div[2]/div[1]',
+      'tweet_enter': '//*[@id="react-root"]/div/div/div[2]/main/div/div/div/div/div/div[3]/div/div[2]/div[1]/div/div/div/div[2]/div[3]/div/div/div[2]/div[3]',
+
       'search_results': '//*[@id="react-root"]/div/div/div[2]/main/div/div/div/div/div/div[3]/div/section/div/div/div[9]',
       'search_bar': '//*[@id="react-root"]/div/div/div[2]/main/div/div/div/div/div/div[1]/div[1]/div[1]/div/div/div/div/div[2]/div[2]/div/div/div/form/div[1]/div/div/div/label/div[2]/div/input'
     };
@@ -108,5 +112,23 @@ module.exports = class Twitter {
     await nextButtonLogin.click();
 
     await this.sleep(2000);
+  }
+
+  async tweet({ content }) {
+    const activeURL = await this.page.url();
+    const url = `https://twitter.com/home`;
+
+    if (activeURL !== url) await this.page.goto(url);
+
+    await this.page.waitForXPath(this.xpaths.tweet_div);
+
+    const tweetModal = await this.page.$x(this.xpaths.tweet_modal);
+    await tweetModal[0].click();
+    await tweetModal[0].type(content, this.defaultDelay);
+
+    const nextButton = await this.page.waitForXPath(this.xpaths.tweet_enter, { visible: true });
+    await nextButton.click();
+
+    await this.sleep(500);
   }
 }
